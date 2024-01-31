@@ -1,0 +1,19 @@
+header {
+  height: 520px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  align-items: center;
+  background-color: beige;
+  background-image: url("../images/binding-light.png");
+}
+
+.profile-picture {
+
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+}

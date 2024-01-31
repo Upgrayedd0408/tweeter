@@ -1,0 +1,23 @@
+nav {
+  font-family: "Bungee";
+  height: 120px;
+  width: 100%;
+  background-color: #4056A1;
+  color: #FFFFFF;
+  padding: 1.5em;
+  position: fixed;
+}
+
+span {
+  font-family: 'Bungee', sans-serif;
+}
+
+.new-tweet {
+  float: right;
+}
+
+.fa-solid.fa-angles-down {
+  position: absolute;
+  top: 70px;
+  right: 150px;
+}
