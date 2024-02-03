@@ -21,12 +21,14 @@
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
   <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/tweets.css" type="text/css" />
   
   <!-- External JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
   <!-- App JS -->
   <script type="text/javascript" src="/scripts/client.js"></script>
+  <script src="/scripts/composer-char-counter.js"></script>
 </head>
 
 <body>
@@ -39,7 +41,7 @@
     </div>
   </nav>
 
-  <header>
+  <header class="user-banner">
     <div>
         <img src="/images/profile-hex.png"> 
     </div>
@@ -63,6 +65,48 @@
           <output name="counter" class="counter" for="tweet-text">140</output>
         </div>
       </form>
+    </section>
+
+    <section>
+      <article class="tweet">
+        <header>
+          <h3>Username</h3>
+          <h3>Tweeter Handle</h3>
+        </header>
+
+          <p>Tweet Input</p>
+
+        <footer>
+          <h6>Days since Tweet</h6>
+          <div class="icons">
+            <i class="fa-solid fa-flag"></i>
+            <i class="fa-solid fa-retweet"></i>
+            <i class="fa-solid fa-heart"></i>
+          </div>
+        </footer>
+
+      </article>
+    </section>
+    
+    <section>
+      <article class="tweet">
+        <header>
+          <h3>Username</h3>
+          <h3>Tweeter Handle</h3>
+        </header>
+
+          <p>Tweet Input</p>
+
+        <footer>
+          <h6>Days since Tweet</h6>
+          <div class="icons">
+            <i class="fa-solid fa-flag"></i>
+            <i class="fa-solid fa-retweet"></i>
+            <i class="fa-solid fa-heart"></i>
+          </div>
+        </footer>
+
+      </article>
     </section>
   </main>
 </body>
