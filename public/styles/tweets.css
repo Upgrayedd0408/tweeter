@@ -40,6 +40,15 @@ div.icons i {
   margin: 2px;
 }
 
+header div {
+  display: flex;
+  flex-direction: row;
+}
+
+header div img {
+  margin-right: 10px;
+}
+
 article.tweet:hover {
   box-shadow: 5px 5px grey;
 }
