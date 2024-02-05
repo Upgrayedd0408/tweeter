@@ -5,7 +5,7 @@
  */
 
 $(document).ready(function() {
-  const data = [
+/*   const data = [
     {
       "user": {
         "name": "Newton",
@@ -28,7 +28,7 @@ $(document).ready(function() {
       },
       "created_at": 1706946168749
     }
-  ];
+  ]; */
 
   function createTweetElement(tweetData) {
     const formattedDate = moment(tweetData.created_at).fromNow();
@@ -92,9 +92,40 @@ $(document).ready(function() {
       // Then, append it to the tweets container
       $('.tweets-container').append($tweetElement);
     });
-  }
+  };
 
-  renderTweets(data);
+  const loadTweets = function() {
+    $.ajax('/tweets', { method: 'GET' })
+    .then(function (data) {
+      console.log('Success: ', renderTweets(data))
+    });
+
+  };
+
+  loadTweets();
+  
+
+
+  $("section.new-tweet form").on("submit", function(handler) {
+    event.preventDefault();
+
+    let inputLength = $(this).closest('form').find('textarea').val().length;
+    let characterCount = 140 - inputLength;
+
+    if(characterCount < 0) {
+      alert("Tweet is over the 140 character limit");
+      return;
+    }
+
+    if(characterCount === 140) {
+      alert("Please enter text into the field below");
+      return;
+    }
+
+    let serialData = $(this).serialize();
+    $.post("/tweets", serialData);
+    console.log(serialData);
+  })
 
 
 });
