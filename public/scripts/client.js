@@ -77,21 +77,17 @@ $(document).ready(function() {
     let serialData = $(this).serialize();
     $.post("/tweets", serialData)
 
-    const renderTweets = function(tweet) {
-        const $tweetElement = createTweetElement(tweet);
-        // Then, append it to the tweets container
+
+    const loadNewTweets = function() {
+      $.ajax('/tweets', { method: 'GET' })
+      .then(function(data) {
+        const $tweetElement = createTweetElement(data[data.length-1]);
         $('.tweets-container').append($tweetElement);
+      })
+
     };
 
-    const loadTweets = function() {
-      $.ajax('/tweets', { method: 'GET' })
-      .then(function (data) {
-        console.log('Success: ', renderTweets(data[data.length-1]))
-      });
-  
-    };
-  
-    loadTweets();
+    loadNewTweets();
   
   });
 
