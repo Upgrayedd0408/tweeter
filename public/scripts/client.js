@@ -5,30 +5,6 @@
  */
 
 $(document).ready(function() {
-/*   const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png",
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1706859768749
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd"
-      },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1706946168749
-    }
-  ]; */
 
   function createTweetElement(tweetData) {
     const formattedDate = moment(tweetData.created_at).fromNow();
@@ -60,31 +36,6 @@ $(document).ready(function() {
     return $(elementHTML);
   }
 
-/*   const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png",
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1706859768749
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd"
-      },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1706946168749
-    }
-  ]; */
-
   const renderTweets = function(tweets) {
     tweets.forEach(function(tweet) {
       // Here, call createTweetElement for each tweet
@@ -98,6 +49,7 @@ $(document).ready(function() {
     $.ajax('/tweets', { method: 'GET' })
     .then(function (data) {
       console.log('Success: ', renderTweets(data))
+      console.log(data);
     });
 
   };
@@ -123,9 +75,25 @@ $(document).ready(function() {
     }
 
     let serialData = $(this).serialize();
-    $.post("/tweets", serialData);
-    console.log(serialData);
-  })
+    $.post("/tweets", serialData)
+
+    const renderTweets = function(tweet) {
+        const $tweetElement = createTweetElement(tweet);
+        // Then, append it to the tweets container
+        $('.tweets-container').append($tweetElement);
+    };
+
+    const loadTweets = function() {
+      $.ajax('/tweets', { method: 'GET' })
+      .then(function (data) {
+        console.log('Success: ', renderTweets(data[data.length-1]))
+      });
+  
+    };
+  
+    loadTweets();
+  
+  });
 
 
 });
