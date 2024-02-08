@@ -50,3 +50,25 @@ div label {
 .negative {
   color: red;
 }
+
+.fa-solid.fa-triangle-exclamation {
+  color: red;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.over-140 {
+  border: 5px solid red;
+  text-align: center;
+  display: none;
+}
+
+.no-text {
+  border: 5px solid red;
+  text-align: center;
+  display: none;
+}
+
+.opacity {
+  opacity: 1;
+}

@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
   <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
   <link rel="stylesheet" href="/styles/tweets.css" type="text/css" />
-  
+
   <!-- External JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
@@ -41,20 +41,24 @@
       <i class="fa-solid fa-angles-down"></i>
     </div>
   </nav>
-
   <header class="user-banner">
     <div>
-        <img src="/images/profile-hex.png"> 
+      <img src="/images/profile-hex.png">
     </div>
     <br>
     <div>
-        <h2>Mike Lowry</h2>
+      <h2>Mike Lowry</h2>
     </div>
   </header>
   <!-- Page-specific (main) content here -->
   <main class="container">
     <!-- New Tweet function -->
     <section class="new-tweet">
+      <div class="error-messages">
+        <p class="over-140"><i class="fa-solid fa-triangle-exclamation"></i>Tweet is over the 140 character limit<i
+            class="fa-solid fa-triangle-exclamation"></i></p>
+        <p class="no-text">Please enter text into the field below</p>
+      </div>
       <h2>Compose Tweet</h2>
       <form method="POST" action="/tweets">
         <div class="user-input">
@@ -69,7 +73,7 @@
     </section>
 
     <section class="tweets-container">
-<!--       <article class="tweet">
+      <!--       <article class="tweet">
         <header>
           <div>
             <img src="https://i.imgur.com/73hZDYK.png">

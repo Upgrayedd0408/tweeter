@@ -9,6 +9,12 @@ $(document).ready(function() {
   function createTweetElement(tweetData) {
     const formattedDate = moment(tweetData.created_at).fromNow();
 
+    const escape = function (str) {
+      let div = document.createElement("div");
+      div.appendChild(document.createTextNode(str));
+      return div.innerHTML;
+    };
+
     const elementHTML = `
       <article class="tweet">
         <header>
@@ -19,7 +25,7 @@ $(document).ready(function() {
           <h3>${tweetData.user.handle}</h3>
         </header>
 
-          <p>${tweetData.content.text}</p>
+          <p>${escape(tweetData.content.text)}</p>
 
         <footer>
           <h6>${formattedDate}</h6>
@@ -65,12 +71,12 @@ $(document).ready(function() {
     let characterCount = 140 - inputLength;
 
     if(characterCount < 0) {
-      alert("Tweet is over the 140 character limit");
+      $('.over-140').slideDown("slow")
       return;
-    }
+    } 
 
     if(characterCount === 140) {
-      alert("Please enter text into the field below");
+      $('.no-text').slideDown("slow");
       return;
     }
 

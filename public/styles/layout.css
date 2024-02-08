@@ -46,3 +46,21 @@ body {
 
  }
 
+ @media screen and (min-width: 1024px) {
+  body {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+  }
+
+  .container {
+    margin-top: 150px;
+  }
+
+  .user-banner {
+    margin-top: 150px;
+    margin-right: 10px;
+  }
+ }
+
