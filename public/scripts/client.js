@@ -4,7 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-$(document).ready(function() {
+$(document).ready(function () {
 
   function createTweetElement(tweetData) {
     const formattedDate = moment(tweetData.created_at).fromNow();
@@ -42,59 +42,56 @@ $(document).ready(function() {
     return $(elementHTML);
   }
 
-  const renderTweets = function(tweets) {
-    tweets.forEach(function(tweet) {
+  const renderTweets = function (tweets) {
+    $('.tweets-container').empty();
+    tweets.forEach(function (tweet) {
       // Here, call createTweetElement for each tweet
       const $tweetElement = createTweetElement(tweet);
       // Then, append it to the tweets container
-      $('.tweets-container').append($tweetElement);
+      $('.tweets-container').prepend($tweetElement);
     });
   };
 
-  const loadTweets = function() {
+  const loadTweets = function () {
     $.ajax('/tweets', { method: 'GET' })
-    .then(function (data) {
-      console.log('Success: ', renderTweets(data))
-      console.log(data);
-    });
+      .then(function (data) {
+        console.log('Success: ', renderTweets(data))
+        console.log(data);
+      });
 
   };
 
   loadTweets();
-  
 
 
-  $("section.new-tweet form").on("submit", function(handler) {
+
+  $("section.new-tweet form").on("submit", function (handler) {
     event.preventDefault();
 
     let inputLength = $(this).closest('form').find('textarea').val().length;
     let characterCount = 140 - inputLength;
 
-    if(characterCount < 0) {
+    if (characterCount < 0) {
       $('.over-140').slideDown("slow")
       return;
-    } 
+    }
 
-    if(characterCount === 140) {
+    if (characterCount === 140) {
       $('.no-text').slideDown("slow");
       return;
     }
 
+    $('.over-140').slideUp('slow');
+    $('.no-text').slideUp("slow");
+
     let serialData = $(this).serialize();
     $.post("/tweets", serialData)
+      .then(() => {
+        loadTweets()
+      });
 
-
-    const loadNewTweets = function() {
-      $.ajax('/tweets', { method: 'GET' })
-      .then(function(data) {
-        const $tweetElement = createTweetElement(data[data.length-1]);
-        $('.tweets-container').append($tweetElement);
-      })
-
-    };
-
-    loadNewTweets();
-  
+    $('textarea').val('').trigger("input");
+    
   });
 
 
