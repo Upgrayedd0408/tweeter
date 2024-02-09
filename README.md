@@ -19,3 +19,10 @@ This repository is the starter code for the project: Students will fork and clon
 - Body Parser
 - Chance
 - Moment
+
+## Screenshots
+
+!["Desktop View of Webpage"](https://github.com/Upgrayedd0408/tweeter/blob/master/docs/desktop-view-main-page.png?raw=true)
+!["Mobile View of Webpage"](https://github.com/Upgrayedd0408/tweeter/blob/master/docs/mobile-view.png?raw=true)
+!["Mobile View with Error"](https://github.com/Upgrayedd0408/tweeter/blob/master/docs/mobile-view-with-error.png?raw=true)
+
